@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "calibratedLensHeight.h"
+#import "angleToBase.h"
+#import "angleToTop.h"
 
 @interface ViewController ()
 
@@ -22,13 +25,6 @@
         // create GUI
         [self createMainGUI];
         
-        // create application variables
-//        createSingletonVariables();
-        
-        // initialize default values
-//        setCalibratedLensHeight(66.0);
-//        setAngleToBaseOfObject(-1.0);
-//        setAngleToTopOfObject(-1.0);
         
     }
     
