@@ -14,6 +14,102 @@
 
 @implementation ViewController
 
+-(instancetype)init {
+    self = [super init];
+    
+    if (self) {
+        
+        // create GUI
+        [self createMainGUI];
+        
+        // create application variables
+//        createSingletonVariables();
+        
+        // initialize default values
+//        setCalibratedLensHeight(66.0);
+//        setAngleToBaseOfObject(-1.0);
+//        setAngleToTopOfObject(-1.0);
+        
+    }
+    
+    return self;
+    
+}
+
+/*
+ Allocates the three main buttons for the main screen and sets constraints for their positioning and adds them to the view
+ */
+
+-(void)createMainGUI {
+    
+    [self.view setBackgroundColor:[UIColor lightGrayColor]];
+   
+    // Allocate buttons and title
+    UIButton *calibrateButton = [UIButton new];
+    UIButton *getDistanceButton = [UIButton new];
+    UIButton *getHeightButton = [UIButton new];
+    
+    UILabel *mainTitle = [UILabel new];
+    
+    [calibrateButton setTitle:@"Don't forget to Calibrate first!" forState:UIControlStateNormal];
+    calibrateButton.backgroundColor = [UIColor redColor];
+    
+    [getDistanceButton setTitle:@"Get distance to object" forState:UIControlStateNormal] ;
+    getDistanceButton.backgroundColor = [UIColor blueColor];
+    
+    [getHeightButton setTitle:@"Get height of object" forState:UIControlStateNormal];
+    getHeightButton.backgroundColor = [UIColor blueColor];
+    
+    mainTitle.text = @"How Tall?";
+    
+    // Add buttons and title to view
+    [self.view addSubview:calibrateButton];
+    [self.view addSubview:getDistanceButton];
+    [self.view addSubview:getHeightButton];
+    
+    [self.view addSubview:mainTitle];
+    
+    // Create contraints for view
+    calibrateButton.translatesAutoresizingMaskIntoConstraints = NO;
+    getDistanceButton.translatesAutoresizingMaskIntoConstraints = NO;
+    getHeightButton.translatesAutoresizingMaskIntoConstraints = NO;
+    mainTitle.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-30-[title(60.0)]-30-[calibrate(50.0)]-80-[distance(50.0)]-40-[height(50.0)]"
+                                                                      options:kNilOptions
+                                                                      metrics:nil
+                                                                        views:@{@"calibrate" : calibrateButton,
+                                                                                @"distance" :getDistanceButton,
+                                                                                @"height" : getHeightButton,
+                                                                                @"title" : mainTitle
+                                                                                }]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[calibrate]-30-|"
+                                                                      options:kNilOptions
+                                                                      metrics:nil
+                                                                        views:@{@"calibrate" : calibrateButton,
+                                                                                    }]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[distance]-30-|"
+                                                                      options:kNilOptions
+                                                                      metrics:nil
+                                                                        views:@{@"distance" :getDistanceButton,
+                                                                                }]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[height]-30-|"
+                                                                      options:kNilOptions
+                                                                      metrics:nil
+                                                                        views:@{@"height" : getHeightButton                                                                          }]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-60-[title]-60-|"
+                                                                      options:kNilOptions
+                                                                      metrics:nil
+                                                                        views:@{@"title" : mainTitle                                                                          }]];
+    
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
