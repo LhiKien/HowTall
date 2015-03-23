@@ -10,6 +10,7 @@
 		279A51031AC0B4A300B16F64 /* calibratedLensHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A51021AC0B4A300B16F64 /* calibratedLensHeight.m */; };
 		279A51061AC0B4C600B16F64 /* angleToBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A51051AC0B4C600B16F64 /* angleToBase.m */; };
 		279A51091AC0B4D700B16F64 /* angleToTop.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A51081AC0B4D700B16F64 /* angleToTop.m */; };
+		279A510C1AC0BA1D00B16F64 /* calibrateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A510B1AC0BA1D00B16F64 /* calibrateView.m */; };
 		27D6688C1AA7AFDD0086ED8E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D6688B1AA7AFDD0086ED8E /* main.m */; };
 		27D6688F1AA7AFDD0086ED8E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D6688E1AA7AFDD0086ED8E /* AppDelegate.m */; };
 		27D668921AA7AFDD0086ED8E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D668911AA7AFDD0086ED8E /* ViewController.m */; };
@@ -36,6 +37,8 @@
 		279A51051AC0B4C600B16F64 /* angleToBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = angleToBase.m; sourceTree = "<group>"; };
 		279A51071AC0B4D700B16F64 /* angleToTop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = angleToTop.h; sourceTree = "<group>"; };
 		279A51081AC0B4D700B16F64 /* angleToTop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = angleToTop.m; sourceTree = "<group>"; };
+		279A510A1AC0BA1D00B16F64 /* calibrateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = calibrateView.h; sourceTree = "<group>"; };
+		279A510B1AC0BA1D00B16F64 /* calibrateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calibrateView.m; sourceTree = "<group>"; };
 		27D668861AA7AFDD0086ED8E /* HowTall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HowTall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D6688A1AA7AFDD0086ED8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27D6688B1AA7AFDD0086ED8E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -104,6 +107,8 @@
 				279A51051AC0B4C600B16F64 /* angleToBase.m */,
 				279A51071AC0B4D700B16F64 /* angleToTop.h */,
 				279A51081AC0B4D700B16F64 /* angleToTop.m */,
+				279A510A1AC0BA1D00B16F64 /* calibrateView.h */,
+				279A510B1AC0BA1D00B16F64 /* calibrateView.m */,
 			);
 			path = HowTall;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 				27D668921AA7AFDD0086ED8E /* ViewController.m in Sources */,
 				27D6688F1AA7AFDD0086ED8E /* AppDelegate.m in Sources */,
 				279A51061AC0B4C600B16F64 /* angleToBase.m in Sources */,
+				279A510C1AC0BA1D00B16F64 /* calibrateView.m in Sources */,
 				27D6688C1AA7AFDD0086ED8E /* main.m in Sources */,
 				279A51031AC0B4A300B16F64 /* calibratedLensHeight.m in Sources */,
 			);

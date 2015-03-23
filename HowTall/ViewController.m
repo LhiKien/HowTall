@@ -10,6 +10,7 @@
 #import "calibratedLensHeight.h"
 #import "angleToBase.h"
 #import "angleToTop.h"
+#import "calibrateView.h"
 
 @interface ViewController ()
 
@@ -33,7 +34,7 @@
 }
 
 /*
- Allocates the three main buttons for the main screen and sets constraints for their positioning and adds them to the view
+ Allocates the three main buttons and title image for the main screen and sets constraints for their positioning and adds them to the view
  */
 
 -(void)createMainGUI {
@@ -57,6 +58,11 @@
     getHeightButton.backgroundColor = [UIColor blueColor];
     
     mainTitle.text = @"How Tall?";
+    
+    // set targets for buttons
+    [calibrateButton addTarget:self action:@selector(pushCalibrateView) forControlEvents:UIControlEventTouchUpInside];
+    [getDistanceButton addTarget:self action:@selector(getDistanceWithCamera) forControlEvents:UIControlEventTouchUpInside];
+    [getHeightButton addTarget:self action:@selector(getHeightWithCamera) forControlEvents:UIControlEventTouchUpInside];
     
     // Add buttons and title to view
     [self.view addSubview:calibrateButton];
@@ -105,6 +111,18 @@
     
     
 }
+
+
+/* Pushes on the calbrate screen view controller */
+
+-(void)pushCalibrateView {
+    
+    calibrateView *calibrateScreen = [calibrateView new];
+    
+    [self.navigationController pushViewController:calibrateScreen animated:YES];
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

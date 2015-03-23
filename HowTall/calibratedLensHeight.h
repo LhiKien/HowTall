@@ -12,6 +12,6 @@
 
 +(calibratedLensHeight*)sharedInstance;
 
-@property (nonatomic, assign) NSNumber* value;
+@property (nonatomic, assign) float value;
 
 @end
