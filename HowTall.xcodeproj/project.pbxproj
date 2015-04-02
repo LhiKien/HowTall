@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		276C63821ACCCEAC0009CC25 /* AROverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C637F1ACCCEAC0009CC25 /* AROverlayViewController.m */; };
 		276C63831ACCCEAC0009CC25 /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C63811ACCCEAC0009CC25 /* CaptureSessionManager.m */; };
+		276C63861ACD0E560009CC25 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C63851ACD0E560009CC25 /* ResultsViewController.m */; };
 		279A51031AC0B4A300B16F64 /* calibratedLensHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A51021AC0B4A300B16F64 /* calibratedLensHeight.m */; };
 		279A51061AC0B4C600B16F64 /* angleToBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A51051AC0B4C600B16F64 /* angleToBase.m */; };
 		279A51091AC0B4D700B16F64 /* angleToTop.m in Sources */ = {isa = PBXBuildFile; fileRef = 279A51081AC0B4D700B16F64 /* angleToTop.m */; };
@@ -37,6 +38,8 @@
 		276C637F1ACCCEAC0009CC25 /* AROverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AROverlayViewController.m; sourceTree = "<group>"; };
 		276C63801ACCCEAC0009CC25 /* CaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
 		276C63811ACCCEAC0009CC25 /* CaptureSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureSessionManager.m; sourceTree = "<group>"; };
+		276C63841ACD0E560009CC25 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
+		276C63851ACD0E560009CC25 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		279A51011AC0B4A300B16F64 /* calibratedLensHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = calibratedLensHeight.h; sourceTree = "<group>"; };
 		279A51021AC0B4A300B16F64 /* calibratedLensHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calibratedLensHeight.m; sourceTree = "<group>"; };
 		279A51041AC0B4C600B16F64 /* angleToBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = angleToBase.h; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				279A51081AC0B4D700B16F64 /* angleToTop.m */,
 				279A510A1AC0BA1D00B16F64 /* calibrateView.h */,
 				279A510B1AC0BA1D00B16F64 /* calibrateView.m */,
+				276C63841ACD0E560009CC25 /* ResultsViewController.h */,
+				276C63851ACD0E560009CC25 /* ResultsViewController.m */,
 			);
 			path = HowTall;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				279A510C1AC0BA1D00B16F64 /* calibrateView.m in Sources */,
 				27D6688C1AA7AFDD0086ED8E /* main.m in Sources */,
 				279A51031AC0B4A300B16F64 /* calibratedLensHeight.m in Sources */,
+				276C63861ACD0E560009CC25 /* ResultsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +386,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HowTall/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -390,6 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HowTall/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

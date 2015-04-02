@@ -2,6 +2,9 @@
 // http://www.musicalgeometry.com/?p=1273
 
 #import "AROverlayViewController.h"
+#import "angleToBase.h"
+#import "angleToTop.h"
+#import "ResultsViewController.h"
 
 @implementation AROverlayViewController
 
@@ -9,10 +12,17 @@
 @synthesize scanningLabel;
 @synthesize motionManager;
 @synthesize currentAngle;
+@synthesize instructionLabel;
+@synthesize gotBase;
+@synthesize gotTop;
 
 #define radiansToDegrees( radians ) ( ( radians ) * ( 180.0 / M_PI ) )
 
 - (void)viewDidLoad {
+    
+    self.gotBase = false;
+    self.gotTop = false;
+    
     
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = 0.2;
@@ -38,31 +48,44 @@
                                                                 CGRectGetMidY(layerRect))];
 	[[[self view] layer] addSublayer:[[self captureManager] previewLayer]];
   
-  UIImageView *overlayImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"overlaygraphic.png"]];
-  [overlayImageView setFrame:CGRectMake(30, 100, 260, 200)];
+  UIImageView *overlayImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"red-crosshair"]];
+  [overlayImageView setFrame:CGRectMake(self.view.center.x-60, self.view.center.y-60, 120, 120)];
   [[self view] addSubview:overlayImageView];
   
-  UIButton *overlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
-  [overlayButton setImage:[UIImage imageNamed:@"scanbutton.png"] forState:UIControlStateNormal];
-  [overlayButton setFrame:CGRectMake(130, 320, 60, 30)];
-  [overlayButton addTarget:self action:@selector(scanButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+  UIButton *overlayButton = [UIButton new];
+  [overlayButton setFrame:CGRectMake(self.view.center.x-60, self.view.center.y+120, 120, 60)];
+  [overlayButton addTarget:self action:@selector(markButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [overlayButton setTitle:@"Mark" forState:UIControlStateNormal];
+    [overlayButton setBackgroundColor:[UIColor blueColor]];
   [[self view] addSubview:overlayButton];
   
-  UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 50, 120, 30)];
-  [self setScanningLabel:tempLabel];
-	[scanningLabel setBackgroundColor:[UIColor clearColor]];
-	[scanningLabel setFont:[UIFont fontWithName:@"Courier" size: 18.0]];
-	[scanningLabel setTextColor:[UIColor redColor]]; 
-	[scanningLabel setText:@"Scanning..."];
-  [scanningLabel setHidden:YES];
-	[[self view] addSubview:scanningLabel];	
+  self.instructionLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x-120, 50, 280, 60)];
+    self.instructionLabel.text = @"Place crosshair at BASE of object and press Mark";
+    self.instructionLabel.numberOfLines = 0;
+	[self.instructionLabel setBackgroundColor:[UIColor clearColor]];
+	[self.instructionLabel setFont:[UIFont fontWithName:@"Courier" size: 18.0]];
+	[self.instructionLabel setTextColor:[UIColor blueColor]];
+	[[self view] addSubview:self.instructionLabel];	
   
 	[[captureManager captureSession] startRunning];
 }
 
-- (void) scanButtonPressed {
-	[[self scanningLabel] setHidden:NO];
-	[self performSelector:@selector(hideLabel:) withObject:[self scanningLabel] afterDelay:2];
+- (void) markButtonPressed {
+    
+    if (!self.gotBase)
+    {
+        [angleToBase sharedInstance].value = self.currentAngle;
+        self.instructionLabel.text = @"Place crosshair at TOP  of object and press Mark";
+        self.gotBase = true;
+        
+    } else if (!self.gotTop)
+    {
+        [angleToTop sharedInstance].value = self.currentAngle;
+        
+        ResultsViewController *results = [[ResultsViewController alloc] init];
+        [self.navigationController pushViewController:results animated:YES];
+    }
+    
 }
 
 - (void)hideLabel:(UILabel *)label {
@@ -77,9 +100,10 @@
     
     self.currentAngle = radiansToDegrees(atanf(acceleration.z/-acceleration.y)) + 90;
     
-    // NSLog(@"%@", [NSString stringWithFormat:@"%.2f°", self.currentAngle]);
+    //NSLog(@"%@", [NSString stringWithFormat:@"%.2f°", self.currentAngle]);
     
 }
+
 
 
 @end

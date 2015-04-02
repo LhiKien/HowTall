@@ -17,7 +17,7 @@
     dispatch_once(&onceToken, ^{
         instance = [[self alloc] init];
         
-        instance.value = @(-1.0);
+        instance.value = -1.0;
     });
     
     return instance;

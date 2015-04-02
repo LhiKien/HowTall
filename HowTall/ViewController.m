@@ -44,7 +44,7 @@
    
     // Allocate buttons and title
     UIButton *calibrateButton = [UIButton new];
-    UIButton *getDistanceButton = [UIButton new];
+    //UIButton *getDistanceButton = [UIButton new];
     UIButton *getHeightButton = [UIButton new];
     
     UILabel *mainTitle = [UILabel new];
@@ -52,8 +52,8 @@
     [calibrateButton setTitle:@"Don't forget to Calibrate first!" forState:UIControlStateNormal];
     calibrateButton.backgroundColor = [UIColor redColor];
     
-    [getDistanceButton setTitle:@"Get distance to object" forState:UIControlStateNormal] ;
-    getDistanceButton.backgroundColor = [UIColor blueColor];
+    //[getDistanceButton setTitle:@"Get distance to object" forState:UIControlStateNormal] ;
+    //getDistanceButton.backgroundColor = [UIColor blueColor];
     
     [getHeightButton setTitle:@"Get height of object" forState:UIControlStateNormal];
     getHeightButton.backgroundColor = [UIColor blueColor];
@@ -62,27 +62,27 @@
     
     // set targets for buttons
     [calibrateButton addTarget:self action:@selector(pushCalibrateView) forControlEvents:UIControlEventTouchUpInside];
-    [getDistanceButton addTarget:self action:@selector(getDistanceWithCamera) forControlEvents:UIControlEventTouchUpInside];
+    //[getDistanceButton addTarget:self action:@selector(getDistanceWithCamera) forControlEvents:UIControlEventTouchUpInside];
     [getHeightButton addTarget:self action:@selector(getHeightWithCamera) forControlEvents:UIControlEventTouchUpInside];
     
     // Add buttons and title to view
     [self.view addSubview:calibrateButton];
-    [self.view addSubview:getDistanceButton];
+    //[self.view addSubview:getDistanceButton];
     [self.view addSubview:getHeightButton];
     
     [self.view addSubview:mainTitle];
     
     // Create contraints for view
     calibrateButton.translatesAutoresizingMaskIntoConstraints = NO;
-    getDistanceButton.translatesAutoresizingMaskIntoConstraints = NO;
+    //getDistanceButton.translatesAutoresizingMaskIntoConstraints = NO;
     getHeightButton.translatesAutoresizingMaskIntoConstraints = NO;
     mainTitle.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-30-[title(60.0)]-30-[calibrate(50.0)]-80-[distance(50.0)]-40-[height(50.0)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-30-[title(60.0)]-30-[calibrate(50.0)]-80-[height(50.0)]"
                                                                       options:kNilOptions
                                                                       metrics:nil
                                                                         views:@{@"calibrate" : calibrateButton,
-                                                                                @"distance" :getDistanceButton,
+                                                                                //@"distance" :getDistanceButton,
                                                                                 @"height" : getHeightButton,
                                                                                 @"title" : mainTitle
                                                                                 }]];
@@ -93,11 +93,11 @@
                                                                         views:@{@"calibrate" : calibrateButton,
                                                                                     }]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[distance]-30-|"
-                                                                      options:kNilOptions
-                                                                      metrics:nil
-                                                                        views:@{@"distance" :getDistanceButton,
-                                                                                }]];
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[distance]-30-|"
+//                                                                      options:kNilOptions
+//                                                                      metrics:nil
+//                                                                        views:@{@"distance" :getDistanceButton,
+//                                                                                }]];
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[height]-30-|"
                                                                       options:kNilOptions
@@ -124,7 +124,7 @@
     
 }
 
--(void)getDistanceWithCamera {
+-(void)getHeightWithCamera {
     
     AROverlayViewController *cameraOverlayView = [AROverlayViewController new];
     
@@ -141,5 +141,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

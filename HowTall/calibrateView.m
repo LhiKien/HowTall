@@ -136,8 +136,7 @@
     [calibratedLensHeight sharedInstance].value = [self.userCalibrationBox.text floatValue];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    NSLog(@"%f", [calibratedLensHeight sharedInstance].value);
+
 
     
 }
