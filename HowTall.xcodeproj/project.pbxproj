@@ -81,6 +81,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		276C63871ACD26DC0009CC25 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				279A51011AC0B4A300B16F64 /* calibratedLensHeight.h */,
+				279A51021AC0B4A300B16F64 /* calibratedLensHeight.m */,
+				279A51041AC0B4C600B16F64 /* angleToBase.h */,
+				279A51051AC0B4C600B16F64 /* angleToBase.m */,
+				279A51071AC0B4D700B16F64 /* angleToTop.h */,
+				279A51081AC0B4D700B16F64 /* angleToTop.m */,
+			);
+			name = Singletons;
+			sourceTree = "<group>";
+		};
+		276C63881ACD27060009CC25 /* ViewController Classes */ = {
+			isa = PBXGroup;
+			children = (
+				276C637E1ACCCEAC0009CC25 /* AROverlayViewController.h */,
+				276C637F1ACCCEAC0009CC25 /* AROverlayViewController.m */,
+				27D668901AA7AFDD0086ED8E /* ViewController.h */,
+				27D668911AA7AFDD0086ED8E /* ViewController.m */,
+				279A510A1AC0BA1D00B16F64 /* calibrateView.h */,
+				279A510B1AC0BA1D00B16F64 /* calibrateView.m */,
+				276C63841ACD0E560009CC25 /* ResultsViewController.h */,
+				276C63851ACD0E560009CC25 /* ResultsViewController.m */,
+			);
+			name = "ViewController Classes";
+			sourceTree = "<group>";
+		};
+		276C63891ACD275E0009CC25 /* Other Classes */ = {
+			isa = PBXGroup;
+			children = (
+				276C63801ACCCEAC0009CC25 /* CaptureSessionManager.h */,
+				276C63811ACCCEAC0009CC25 /* CaptureSessionManager.m */,
+				27D6688D1AA7AFDD0086ED8E /* AppDelegate.h */,
+				27D6688E1AA7AFDD0086ED8E /* AppDelegate.m */,
+			);
+			name = "Other Classes";
+			sourceTree = "<group>";
+		};
 		27D6687D1AA7AFDD0086ED8E = {
 			isa = PBXGroup;
 			children = (
@@ -102,28 +141,13 @@
 		27D668881AA7AFDD0086ED8E /* HowTall */ = {
 			isa = PBXGroup;
 			children = (
-				276C637E1ACCCEAC0009CC25 /* AROverlayViewController.h */,
-				276C637F1ACCCEAC0009CC25 /* AROverlayViewController.m */,
-				276C63801ACCCEAC0009CC25 /* CaptureSessionManager.h */,
-				276C63811ACCCEAC0009CC25 /* CaptureSessionManager.m */,
-				27D6688D1AA7AFDD0086ED8E /* AppDelegate.h */,
-				27D6688E1AA7AFDD0086ED8E /* AppDelegate.m */,
-				27D668901AA7AFDD0086ED8E /* ViewController.h */,
-				27D668911AA7AFDD0086ED8E /* ViewController.m */,
+				276C63891ACD275E0009CC25 /* Other Classes */,
+				276C63881ACD27060009CC25 /* ViewController Classes */,
+				276C63871ACD26DC0009CC25 /* Singletons */,
 				27D668931AA7AFDD0086ED8E /* Main.storyboard */,
 				27D668961AA7AFDD0086ED8E /* Images.xcassets */,
 				27D668981AA7AFDD0086ED8E /* LaunchScreen.xib */,
 				27D668891AA7AFDD0086ED8E /* Supporting Files */,
-				279A51011AC0B4A300B16F64 /* calibratedLensHeight.h */,
-				279A51021AC0B4A300B16F64 /* calibratedLensHeight.m */,
-				279A51041AC0B4C600B16F64 /* angleToBase.h */,
-				279A51051AC0B4C600B16F64 /* angleToBase.m */,
-				279A51071AC0B4D700B16F64 /* angleToTop.h */,
-				279A51081AC0B4D700B16F64 /* angleToTop.m */,
-				279A510A1AC0BA1D00B16F64 /* calibrateView.h */,
-				279A510B1AC0BA1D00B16F64 /* calibrateView.m */,
-				276C63841ACD0E560009CC25 /* ResultsViewController.h */,
-				276C63851ACD0E560009CC25 /* ResultsViewController.m */,
 			);
 			path = HowTall;
 			sourceTree = "<group>";
