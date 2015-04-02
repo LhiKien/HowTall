@@ -11,6 +11,7 @@
 #import "angleToBase.h"
 #import "angleToTop.h"
 #import "calibrateView.h"
+#import "AROverlayViewController.h"
 
 @interface ViewController ()
 
@@ -121,6 +122,13 @@
     
     [self.navigationController pushViewController:calibrateScreen animated:YES];
     
+}
+
+-(void)getDistanceWithCamera {
+    
+    AROverlayViewController *cameraOverlayView = [AROverlayViewController new];
+    
+    [self.navigationController pushViewController:cameraOverlayView animated:YES];
 }
 
 
