@@ -1,23 +1,22 @@
 //
-//  ResultsViewController.m
+//  ResultsViewControllerDist.m
 //  HowTall
 //
 //  Created by Kyle on 4/1/15.
 //  Copyright (c) 2015 USU. All rights reserved.
 //
 
-#import "ResultsViewController.h"
+#import "ResultsViewControllerDist.h"
 #import "calibratedLensHeight.h"
 #import "angleToBase.h"
-#import "angleToTop.h"
 
 #define degreesToRadians( degrees ) ( ( degrees / 180.0) * M_PI )
 
-@interface ResultsViewController ()
+@interface ResultsViewControllerDist ()
 
 @end
 
-@implementation ResultsViewController
+@implementation ResultsViewControllerDist
 
 -(instancetype)init {
     self = [super init];
@@ -48,16 +47,13 @@
     
     UILabel *distanceToObject = [UILabel new];
     UILabel *distanceToObjectResult = [UILabel new];
-    UILabel *heightOfObjectResult = [UILabel new];
-    UILabel *heightOfObject = [UILabel new];
     
-    UIImageView *mainTitle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"howTall"]];
-    [[self view] addSubview:mainTitle];
+    UILabel *mainTitle = [UILabel new];
     
     distanceToObject.text = @"Distance to object:";
     
-    heightOfObject.text = @"Height of obejct:";
     
+    mainTitle.text = @"How Tall?";
     
     [doneButton addTarget:self action:@selector(doneButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
@@ -65,25 +61,19 @@
     [self.view addSubview:doneButton];
     [self.view addSubview:distanceToObject];
     [self.view addSubview:distanceToObjectResult];
-    [self.view addSubview:heightOfObject];
-    [self.view addSubview:heightOfObjectResult];
     [self.view addSubview:mainTitle];
     
     // Create contraints for view
     doneButton.translatesAutoresizingMaskIntoConstraints = NO;
     distanceToObject.translatesAutoresizingMaskIntoConstraints = NO;
     distanceToObjectResult.translatesAutoresizingMaskIntoConstraints = NO;
-    heightOfObject.translatesAutoresizingMaskIntoConstraints = NO;
-    heightOfObjectResult.translatesAutoresizingMaskIntoConstraints = NO;
     mainTitle.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-30-[title(100.0)]-30-[distance(30.0)]-10-[distResult(30.0)]-30-[height(30.0)]-10-[heightResult(30.0)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-30-[title(60.0)]-30-[distance(30.0)]-10-[distResult(30.0)]"
                                                                       options:kNilOptions
                                                                       metrics:nil
                                                                         views:@{@"distance" : distanceToObject,
                                                                                 @"distResult" : distanceToObjectResult,
-                                                                                @"height" : heightOfObject,
-                                                                                @"heightResult" : heightOfObjectResult,
                                                                                 @"title" : mainTitle
                                                                                 }]];
     
@@ -104,17 +94,6 @@
                                                                         views:@{@"distResult" : distanceToObjectResult,
                                                                                 }]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[height]-30-|"
-                                                                      options:kNilOptions
-                                                                      metrics:nil
-                                                                        views:@{@"height" : heightOfObject,
-                                                                                }]];
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[heightResult]-30-|"
-                                                                      options:kNilOptions
-                                                                      metrics:nil
-                                                                        views:@{@"heightResult" : heightOfObjectResult,
-                                                                                }]];
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-60-[done]-60-|"
                                                                       options:kNilOptions
@@ -132,29 +111,15 @@
     /* Magic maths to calculate height and distance */
     
     float bAngle = [angleToBase sharedInstance].value;
-    float tAngle = [angleToTop sharedInstance].value;
     float lensHeight = [calibratedLensHeight sharedInstance].value;
     
     
     float distance = tanf(degreesToRadians(bAngle)) * lensHeight;
     
-    float diffAngle = tAngle - bAngle;
-    
-    float hypo = sqrt(powf(lensHeight, 2) + powf(distance, 2));
-    
-    float topAngle = (180.0 - tAngle);
-    
-    float height = sinf(degreesToRadians(diffAngle)) / (sinf(degreesToRadians(topAngle))/hypo);
-    
     int distFeet = distance / 12;
     int distInch = (int)distance % 12;
     
-    int heightFeet = height / 12;
-    int heightInch = (int)height % 12;
-    
     distanceToObjectResult.text = [NSString stringWithFormat:@"%i ft, %i inches (%.2f inches)" , distFeet, distInch, distance];
-    heightOfObjectResult.text = [NSString stringWithFormat:@"%i ft, %i inches (%.2f inches)", heightFeet, heightInch, height];
-    
     
 }
 

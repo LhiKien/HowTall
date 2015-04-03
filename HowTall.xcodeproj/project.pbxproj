@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		276C2F051ACF4DB400438918 /* AROverlayViewControllerDist.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C2F041ACF4DB400438918 /* AROverlayViewControllerDist.m */; };
+		276C2F081ACF4DE900438918 /* ResultsViewControllerDist.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C2F061ACF4DE900438918 /* ResultsViewControllerDist.m */; };
 		276C63821ACCCEAC0009CC25 /* AROverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C637F1ACCCEAC0009CC25 /* AROverlayViewController.m */; };
 		276C63831ACCCEAC0009CC25 /* CaptureSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C63811ACCCEAC0009CC25 /* CaptureSessionManager.m */; };
 		276C63861ACD0E560009CC25 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C63851ACD0E560009CC25 /* ResultsViewController.m */; };
@@ -34,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		276C2F031ACF4DB400438918 /* AROverlayViewControllerDist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AROverlayViewControllerDist.h; sourceTree = "<group>"; };
+		276C2F041ACF4DB400438918 /* AROverlayViewControllerDist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AROverlayViewControllerDist.m; sourceTree = "<group>"; };
+		276C2F061ACF4DE900438918 /* ResultsViewControllerDist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewControllerDist.m; sourceTree = "<group>"; };
+		276C2F071ACF4DE900438918 /* ResultsViewControllerDist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewControllerDist.h; sourceTree = "<group>"; };
 		276C637E1ACCCEAC0009CC25 /* AROverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AROverlayViewController.h; sourceTree = "<group>"; };
 		276C637F1ACCCEAC0009CC25 /* AROverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AROverlayViewController.m; sourceTree = "<group>"; };
 		276C63801ACCCEAC0009CC25 /* CaptureSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureSessionManager.h; sourceTree = "<group>"; };
@@ -97,6 +103,10 @@
 		276C63881ACD27060009CC25 /* ViewController Classes */ = {
 			isa = PBXGroup;
 			children = (
+				276C2F061ACF4DE900438918 /* ResultsViewControllerDist.m */,
+				276C2F071ACF4DE900438918 /* ResultsViewControllerDist.h */,
+				276C2F031ACF4DB400438918 /* AROverlayViewControllerDist.h */,
+				276C2F041ACF4DB400438918 /* AROverlayViewControllerDist.m */,
 				276C637E1ACCCEAC0009CC25 /* AROverlayViewController.h */,
 				276C637F1ACCCEAC0009CC25 /* AROverlayViewController.m */,
 				27D668901AA7AFDD0086ED8E /* ViewController.h */,
@@ -278,8 +288,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				276C2F051ACF4DB400438918 /* AROverlayViewControllerDist.m in Sources */,
 				276C63821ACCCEAC0009CC25 /* AROverlayViewController.m in Sources */,
 				279A51091AC0B4D700B16F64 /* angleToTop.m in Sources */,
+				276C2F081ACF4DE900438918 /* ResultsViewControllerDist.m in Sources */,
 				27D668921AA7AFDD0086ED8E /* ViewController.m in Sources */,
 				27D6688F1AA7AFDD0086ED8E /* AppDelegate.m in Sources */,
 				279A51061AC0B4C600B16F64 /* angleToBase.m in Sources */,

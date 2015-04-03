@@ -1,4 +1,4 @@
-//  AROverlayViewController.m
+//  AROverlayViewControllerDist.m
 //  HowTall
 //
 //  Created by Kyle on 4/1/15.
@@ -8,12 +8,11 @@
 //  http://www.musicalgeometry.com/?p=1273
 //
 
-#import "AROverlayViewController.h"
+#import "AROverlayViewControllerDist.h"
 #import "angleToBase.h"
-#import "angleToTop.h"
-#import "ResultsViewController.h"
+#import "ResultsViewControllerDist.h"
 
-@implementation AROverlayViewController
+@implementation AROverlayViewControllerDist
 
 @synthesize captureManager;
 @synthesize scanningLabel;
@@ -21,14 +20,12 @@
 @synthesize currentAngle;
 @synthesize instructionLabel;
 @synthesize gotBase;
-@synthesize gotTop;
 
 #define radiansToDegrees( radians ) ( ( radians ) * ( 180.0 / M_PI ) )
 
 - (void)viewDidLoad {
     
     self.gotBase = false;
-    self.gotTop = false;
     
     
     self.motionManager = [[CMMotionManager alloc] init];
@@ -65,14 +62,14 @@
     [overlayButton setTitle:@"Mark" forState:UIControlStateNormal];
     [overlayButton setBackgroundColor:[UIColor blueColor]];
   [[self view] addSubview:overlayButton];
-  
+    
     UIButton *quitButton = [UIButton new];
     [quitButton setFrame:CGRectMake(30, 30, 60, 30)];
     [quitButton addTarget:self action:@selector(quitButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [quitButton setTitle:@"Quit" forState:UIControlStateNormal];
     [quitButton setBackgroundColor:[UIColor redColor]];
     [[self view] addSubview:quitButton];
-    
+  
   self.instructionLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.center.x-120, overlayButton.center.y-110, 280, 60)];
     self.instructionLabel.text = @"Place crosshair at BASE of object and press Mark";
     self.instructionLabel.numberOfLines = 0;
@@ -89,15 +86,9 @@
     if (!self.gotBase)
     {
         [angleToBase sharedInstance].value = self.currentAngle;
-        self.instructionLabel.frame = CGRectMake(self.view.center.x-120, 70, 280, 60);
-        self.instructionLabel.text = @"Place crosshair at TOP  of object and press Mark";
         self.gotBase = true;
         
-    } else if (!self.gotTop)
-    {
-        [angleToTop sharedInstance].value = self.currentAngle;
-        
-        ResultsViewController *results = [[ResultsViewController alloc] init];
+        ResultsViewControllerDist *results = [[ResultsViewControllerDist alloc] init];
         [self.navigationController pushViewController:results animated:YES];
     }
     

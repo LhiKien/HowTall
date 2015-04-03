@@ -46,7 +46,8 @@
     UILabel *userInstructions = [UILabel new];
     UILabel *userHint = [UILabel new];
     
-    UILabel *mainTitle = [UILabel new];
+    UIImageView *mainTitle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"howTall"]];
+    [[self view] addSubview:mainTitle];
     
     [saveCalibrationButton setTitle:@"Set Height" forState:UIControlStateNormal];
     saveCalibrationButton.backgroundColor = [UIColor redColor];
@@ -63,8 +64,6 @@
     userHint.text = @"You can usually use your own height minus 4 inches depending on how you hold your phone";
     userHint.numberOfLines = 0;
     
-    mainTitle.text = @"How Tall?";
-    
     // Add buttons and title to view
     [self.view addSubview:saveCalibrationButton];
     [self.view addSubview:self.userCalibrationBox];
@@ -79,7 +78,7 @@
     userHint.translatesAutoresizingMaskIntoConstraints = NO;
     mainTitle.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-30-[title(60.0)]-20-[instructions(50.0)]-10-[input(50.0)]-20-[hint(70.0)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-30-[title(100.0)]-20-[instructions(50.0)]-10-[input(50.0)]-20-[hint(70.0)]"
                                                                       options:kNilOptions
                                                                       metrics:nil
                                                                         views:@{@"instructions" : userInstructions,
