@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2718A0EA1ADB425300BCA02A /* AdvancedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718A0E91ADB425300BCA02A /* AdvancedView.m */; };
 		276C2F051ACF4DB400438918 /* AROverlayViewControllerDist.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C2F041ACF4DB400438918 /* AROverlayViewControllerDist.m */; };
 		276C2F081ACF4DE900438918 /* ResultsViewControllerDist.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C2F061ACF4DE900438918 /* ResultsViewControllerDist.m */; };
 		276C63821ACCCEAC0009CC25 /* AROverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276C637F1ACCCEAC0009CC25 /* AROverlayViewController.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2718A0E81ADB425300BCA02A /* AdvancedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedView.h; sourceTree = "<group>"; };
+		2718A0E91ADB425300BCA02A /* AdvancedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedView.m; sourceTree = "<group>"; };
 		276C2F031ACF4DB400438918 /* AROverlayViewControllerDist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AROverlayViewControllerDist.h; sourceTree = "<group>"; };
 		276C2F041ACF4DB400438918 /* AROverlayViewControllerDist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AROverlayViewControllerDist.m; sourceTree = "<group>"; };
 		276C2F061ACF4DE900438918 /* ResultsViewControllerDist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewControllerDist.m; sourceTree = "<group>"; };
@@ -113,6 +116,8 @@
 				27D668911AA7AFDD0086ED8E /* ViewController.m */,
 				279A510A1AC0BA1D00B16F64 /* calibrateView.h */,
 				279A510B1AC0BA1D00B16F64 /* calibrateView.m */,
+				2718A0E81ADB425300BCA02A /* AdvancedView.h */,
+				2718A0E91ADB425300BCA02A /* AdvancedView.m */,
 				276C63841ACD0E560009CC25 /* ResultsViewController.h */,
 				276C63851ACD0E560009CC25 /* ResultsViewController.m */,
 			);
@@ -291,6 +296,7 @@
 				276C2F051ACF4DB400438918 /* AROverlayViewControllerDist.m in Sources */,
 				276C63821ACCCEAC0009CC25 /* AROverlayViewController.m in Sources */,
 				279A51091AC0B4D700B16F64 /* angleToTop.m in Sources */,
+				2718A0EA1ADB425300BCA02A /* AdvancedView.m in Sources */,
 				276C2F081ACF4DE900438918 /* ResultsViewControllerDist.m in Sources */,
 				27D668921AA7AFDD0086ED8E /* ViewController.m in Sources */,
 				27D6688F1AA7AFDD0086ED8E /* AppDelegate.m in Sources */,
@@ -425,6 +431,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -436,6 +443,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

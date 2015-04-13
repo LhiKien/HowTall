@@ -13,5 +13,6 @@
 +(angleToBase*)sharedInstance;
 
 @property (nonatomic, assign) float value;
+@property (nonatomic, assign) NSInteger calibrationAdjustment;
 
 @end

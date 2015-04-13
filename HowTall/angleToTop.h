@@ -13,5 +13,6 @@
 +(angleToTop*)sharedInstance;
 
 @property (nonatomic, assign) float value;
+//@property (nonatomic, assign) float calibrationAdjustment;
 
 @end

@@ -18,6 +18,7 @@
         instance = [[self alloc] init];
         
         instance.value = -1.0;
+        //instance.calibrationAdjustment = 0;
     });
     
     return instance;

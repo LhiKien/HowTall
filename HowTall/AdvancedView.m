@@ -1,24 +1,21 @@
 //
-//  calibrateView.m
+//  AdvancedView.m
 //  HowTall
 //
-//  Created by Kyle on 3/23/15.
+//  Created by Kyle on 4/12/15.
 //  Copyright (c) 2015 USU. All rights reserved.
 //
 
-#import "calibrateView.h"
-#import "calibratedLensHeight.h"
-#import "angleToBase.h"
-#import "angleToTop.h"
 #import "AdvancedView.h"
+#import "angleToBase.h"
 
-@interface calibrateView ()
+@interface AdvancedView ()
 
 @property (nonatomic, strong) UITextField *userCalibrationBox;
 
 @end
 
-@implementation calibrateView
+@implementation AdvancedView
 
 -(instancetype)init {
     self = [super init];
@@ -26,7 +23,7 @@
     if (self) {
         
         // create GUI
-        [self createCalibrateGUI];
+        [self createAdvancedGUI];
         
         
     }
@@ -38,15 +35,16 @@
 /*
  Allocates the buttons and text box for the calibration screen with instruction labels */
 
--(void)createCalibrateGUI {
+-(void)createAdvancedGUI {
     
     [self.view setBackgroundColor:[UIColor lightGrayColor]];
     
     // Allocate buttons and text boxes
-    UIButton *saveCalibrationButton = [UIButton new];
+    UIButton *increaseCalibration = [UIButton new];
+    UIButton *decreaseCalibration = [UIButton new];
     UIButton *doneCalibrating = [UIButton new];
-    UIButton *advancedCalibration = [UIButton new];
     self.userCalibrationBox = [UITextField new];
+    self.userCalibrationBox.enabled = NO;
     
     UILabel *userInstructions = [UILabel new];
     UILabel *userHint = [UILabel new];
@@ -54,57 +52,60 @@
     UIImageView *mainTitle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"howTall"]];
     [[self view] addSubview:mainTitle];
     
-    [saveCalibrationButton setTitle:@"Set Height" forState:UIControlStateNormal];
-    saveCalibrationButton.backgroundColor = [UIColor redColor];
-    [saveCalibrationButton addTarget:self action:@selector(saveCalibrationAndDismiss) forControlEvents:UIControlEventTouchUpInside];
+    [increaseCalibration setTitle:@">" forState:UIControlStateNormal];
+    increaseCalibration.backgroundColor = [UIColor redColor];
+    [increaseCalibration addTarget:self action:@selector(increaseValue) forControlEvents:UIControlEventTouchUpInside];
+    
+    [decreaseCalibration setTitle:@"<" forState:UIControlStateNormal];
+    decreaseCalibration.backgroundColor = [UIColor redColor];
+    [decreaseCalibration addTarget:self action:@selector(decreaseValue) forControlEvents:UIControlEventTouchUpInside];
     
     [doneCalibrating setTitle:@"Done" forState:UIControlStateNormal];
     doneCalibrating.backgroundColor = [UIColor blueColor];
     [doneCalibrating addTarget:self action:@selector(doneCalibrating) forControlEvents:UIControlEventTouchUpInside];
     
-    [advancedCalibration setTitle:@"Advanced Calibration" forState:UIControlStateNormal];
-    advancedCalibration.backgroundColor = [UIColor redColor];
-    [advancedCalibration addTarget:self action:@selector(advancedCalibrationPress) forControlEvents:UIControlEventTouchUpInside];
-    
     self.userCalibrationBox.backgroundColor = [UIColor whiteColor];
-    self.userCalibrationBox.keyboardType = UIKeyboardTypeDecimalPad;
+    self.userCalibrationBox.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     self.userCalibrationBox.textAlignment = NSTextAlignmentCenter;
-    self.userCalibrationBox.text = [NSString stringWithFormat:@"%.1f" , [calibratedLensHeight sharedInstance].value];
+    self.userCalibrationBox.text = [NSString stringWithFormat:@"%i" , [angleToBase sharedInstance].calibrationAdjustment];
     
-    userInstructions.text = @"Enter the height of the camera lens from the ground in inches:";
+    userInstructions.text = @"Use these buttons to adjust calibration if reported results are too high or too low:";
     userInstructions.numberOfLines = 0;
     
-    userHint.text = @"You can usually use your own height minus 4 inches depending on how you hold your phone";
+    userHint.text = @"If the reported results are too high set it negative. If they are too low set it positive. Use small values and test for accuracy.";
     userHint.numberOfLines = 0;
     
     // Add buttons and title to view
-    [self.view addSubview:saveCalibrationButton];
+    [self.view addSubview:increaseCalibration];
+    [self.view addSubview:decreaseCalibration];
     [self.view addSubview:self.userCalibrationBox];
     [self.view addSubview:userInstructions];
     [self.view addSubview:userHint];
     [self.view addSubview:mainTitle];
     [self.view addSubview:doneCalibrating];
-    [self.view addSubview:advancedCalibration];
     
     // Create contraints for view
-    saveCalibrationButton.translatesAutoresizingMaskIntoConstraints = NO;
+    increaseCalibration.translatesAutoresizingMaskIntoConstraints = NO;
+    decreaseCalibration.translatesAutoresizingMaskIntoConstraints = NO;
     self.userCalibrationBox.translatesAutoresizingMaskIntoConstraints = NO;
     userInstructions.translatesAutoresizingMaskIntoConstraints = NO;
     userHint.translatesAutoresizingMaskIntoConstraints = NO;
     mainTitle.translatesAutoresizingMaskIntoConstraints = NO;
     doneCalibrating.translatesAutoresizingMaskIntoConstraints = NO;
-    advancedCalibration.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-30-[title(100.0)]-5-[instructions(45.0)]-10-[input(40.0)]-10-[hint(60.0)]-10-[advanced(40.0)]-20-[done(50.0)]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-30-[title(100.0)]-5-[instructions(60.0)]-10-[input(40.0)]-10-[hint(80.0)]"
                                                                       options:kNilOptions
                                                                       metrics:nil
                                                                         views:@{@"instructions" : userInstructions,
                                                                                 @"input" :self.userCalibrationBox,
                                                                                 @"hint" : userHint,
                                                                                 @"title" : mainTitle,
-                                                                                @"advanced" : advancedCalibration,
-                                                                                @"done" : doneCalibrating
                                                                                 }]];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[done(50.0)]-30-|"
+                                                                      options:kNilOptions
+                                                                      metrics:nil
+                                                                        views:@{@"done" : doneCalibrating}]];
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[instructions]-30-|"
                                                                       options:kNilOptions
@@ -112,11 +113,12 @@
                                                                         views:@{@"instructions" : userInstructions,
                                                                                 }]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[input]-10-[save(120.0)]-30-|"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[input]-10-[decrease(50.0)]-10-[increase(50.0)]-30-|"
                                                                       options:kNilOptions
                                                                       metrics:nil
                                                                         views:@{@"input" : self.userCalibrationBox,
-                                                                                @"save" : saveCalibrationButton
+                                                                                @"increase" : increaseCalibration,
+                                                                                @"decrease" : decreaseCalibration
                                                                                 }]];
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[hint]-30-|"
@@ -124,10 +126,6 @@
                                                                       metrics:nil
                                                                         views:@{@"hint" : userHint                                                                          }]];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[advanced]-30-|"
-                                                                      options:kNilOptions
-                                                                      metrics:nil
-                                                                        views:@{@"advanced" : advancedCalibration                                                                          }]];
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-30-[done]-30-|"
                                                                       options:kNilOptions
@@ -139,15 +137,31 @@
                                                                       metrics:nil
                                                                         views:@{@"title" : mainTitle                                                                          }]];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:saveCalibrationButton
-                                                         attribute:NSLayoutAttributeTop
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self.userCalibrationBox
-                                                         attribute:NSLayoutAttributeTop
-                                                        multiplier:1.0
-                                                          constant:0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:increaseCalibration
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.userCalibrationBox
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1.0
+                                                           constant:0]];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:saveCalibrationButton
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:increaseCalibration
+                                                          attribute:NSLayoutAttributeHeight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.userCalibrationBox
+                                                          attribute:NSLayoutAttributeHeight
+                                                         multiplier:1.0
+                                                           constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:decreaseCalibration
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.userCalibrationBox
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1.0
+                                                           constant:0]];
+    
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:decreaseCalibration
                                                           attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.userCalibrationBox
@@ -159,26 +173,28 @@
     
 }
 
--(void)saveCalibrationAndDismiss {
+-(void)increaseValue {
     
-    [calibratedLensHeight sharedInstance].value = [self.userCalibrationBox.text floatValue];
-    [self.userCalibrationBox resignFirstResponder];
+    if ([self.userCalibrationBox.text integerValue] < 10)
+    {
+        self.userCalibrationBox.text = [NSString stringWithFormat:@"%i" , [self.userCalibrationBox.text integerValue] + 1];
+    }
+}
+
+
+-(void)decreaseValue {
     
-    //[self.navigationController popToRootViewControllerAnimated:YES];
-    
+    if ([self.userCalibrationBox.text integerValue] > -10)
+    {
+        self.userCalibrationBox.text = [NSString stringWithFormat:@"%i" , [self.userCalibrationBox.text integerValue] - 1];
+    }
 }
 
 -(void)doneCalibrating {
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-
--(void)advancedCalibrationPress {
+    [angleToBase sharedInstance].calibrationAdjustment = [self.userCalibrationBox.text integerValue];
     
-    AdvancedView *advanced = [AdvancedView new];
-    
-    [self.navigationController pushViewController:advanced animated:YES];
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -193,13 +209,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

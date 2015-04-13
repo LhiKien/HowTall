@@ -131,8 +131,10 @@
     
     /* Magic maths to calculate height and distance */
     
-    float bAngle = [angleToBase sharedInstance].value;
-    float tAngle = [angleToTop sharedInstance].value;
+    float bAngle = [angleToBase sharedInstance].value * (1.00 + ([angleToBase sharedInstance].calibrationAdjustment/100.0) - .05);
+    
+    float tAngle = [angleToTop sharedInstance].value * (1.00 + ([angleToBase sharedInstance].calibrationAdjustment/100.0) - .05);
+    
     float lensHeight = [calibratedLensHeight sharedInstance].value;
     
     
